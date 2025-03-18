@@ -2,13 +2,15 @@
  * =====================================================================
  * Programming Project for NCEA Level 2, Standard 91896
  * ---------------------------------------------------------------------
- * Project Name:   Old Gold
+ * Project Name:   Snakes and Ladders
  * Project Author: Toby Watkinson
  * GitHub Repo:    https://github.com/waimea-twatkinson2/level-2-programming-assessment
  * ---------------------------------------------------------------------
  * Notes:
- * Old Gold is a two-player game, played on a one-dimensional grid with coins,
- * where the aim is to win by being the player who removes the gold coin.
+ * Snakes and Ladders is a simple game that involves a grid of 100 total squares
+ * where your goal is to reach square 100 while rolling a 6 sided die,
+ * along the way there are ladders that take you up spaces and snakes that
+ * take you down spaces.
  * =====================================================================
  */
 

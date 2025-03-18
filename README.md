@@ -1,4 +1,4 @@
-# Old Gold Game
+# Snakes and ladders
 
 by Toby Watkinson
 
@@ -8,6 +8,7 @@ This is a programming project for **NCEA Level 2**, assessed against standard [9
 
 The project is written in the [Kotlin](https://kotlinlang.org) programming language and demonstrates a number of **advanced programming techniques**:
 - Modifying data stored in collections
+- Storing multi-dimensional data in collections
 - Creating functions that use parameters and/or return values
 - Using non-trivial string manipulation
 - Using additional non-core libraries
@@ -26,8 +27,7 @@ The project is written in the [Kotlin](https://kotlinlang.org) programming langu
 
 ## Project Description
 
-Old Gold is a two-player game, played on a one-dimensional grid with coins, 
-where the aim is to win by being the player who **removes the gold coin**.
+Snakes and Ladders is a simple game that invloves a grid of 100 total squares where your goal is to reach square 100 while rolling a 6 sided die, along the way there are ladders that take you up spaces and snakes that take you down spaces.
 
 
 
