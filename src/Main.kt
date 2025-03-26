@@ -18,173 +18,242 @@ const val player = "◈"
 const val empty = "·"
 const val snake = "\uD83D\uDC0D"
 const val ladder = "\uD83E\uDE9C"
+val player1 = "◈".blue()
+val player2 = "◈".red()
 
 const val row = 10
 const val snakesAndLadders = 8
 
 fun main() {
     //The grid
-    val grid = Array(10) { Array(10) { 0 } }
+    val grid = Array(10) { Array(10) { "0" } }
 
     //Welcome screen
     println("~".col("#FF0000") + "~".col("#FF1A00") +"~".col("#FF3300") +"~".col("#FF4D00") +"~".col("#FF6600") +"~".col("#FF8000") +"~".col("#FF9900") +"~".col("#FFB200") +"~".col("#FFCC00") +"~".col("#FFE600") +"~".col("#FFFF00") +"~".col("#E6FF00") +"~".col("#CCFF00") +"~".col("#B2FF00") +"~".col("#99FF00") +"~".col("#80FF00") +"~".col("#66FF00") +"~".col("#4DFF00") +"~".col("#33FF00") +"~".col("#1AFF00") +"~".col("#00FF00") +"~".col("#00FF1A") +"~".col("#00FF33") +"~".col("#00FF4D") +"~".col("#00FF66") +"~".col("#00FF80") +"~".col("#00FF99") +"~".col("#00FFB2") +"~".col("#00FFCC") +"~".col("#00FFFF"))
     println("Welcome to Snakes and Ladders!".col("#FFFFFF"))
     println("~".col("#00FFFF") + "~".col("#00FFCC") +"~".col("#00FFB2") +"~".col("#00FF99") +"~".col("#00FF80") +"~".col("#00FF66") +"~".col("#00FF4D") +"~".col("#00FF33") +"~".col("#00FF1A") +"~".col("#00FF00") +"~".col("#1AFF00") +"~".col("#33FF00") +"~".col("#4DFF00") +"~".col("#66FF00") +"~".col("#80FF00") +"~".col("#99FF00") +"~".col("#B2FF00") +"~".col("#CCFF00") +"~".col("#E6FF00") +"~".col("#FFFF00") +"~".col("#FFE600") +"~".col("#FFCC00") +"~".col("#FFB200") +"~".col("#FF9900") +"~".col("#FF8000") +"~".col("#FF6600") +"~".col("#FF4D00") +"~".col("#FF3300") +"~".col("#FF1A00") +"~".col("#FF0000"))
 
-    //Grid Textures
+    //Player names
+    val player1Name = getString("Player 1 enter your name: ")
+    val player2Name = getString("Player 2 enter your name: ")
+    println("Welcome, $player1Name and $player2Name")
+    println()
+
+    //Grid Textures / rules
+    println("Snakes and Ladders is a simple game that involves a grid of 100 total squares\nwhere your goal is to reach square 100 while rolling a 6 sided die,\nalong the way there are ladders that take you up spaces and snakes that\ntake you down spaces.")
+    println()
     println("Player: ".padEnd(10) + player)
     println("Snake: ".padEnd(10) + snake)
     println("Ladder: ".padEnd(10) + ladder)
+    println()
 
     //Assigning numbers to grid
     var sillyGooseNumber = 0
     var printNumber = 100
     while (sillyGooseNumber < 10) {
-        grid[0][sillyGooseNumber] = printNumber
+        grid[0][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[1][sillyGooseNumber] = printNumber
+        grid[1][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[2][sillyGooseNumber] = printNumber
+        grid[2][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[3][sillyGooseNumber] = printNumber
+        grid[3][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[4][sillyGooseNumber] = printNumber
+        grid[4][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[5][sillyGooseNumber] = printNumber
+        grid[5][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[6][sillyGooseNumber] = printNumber
+        grid[6][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[7][sillyGooseNumber] = printNumber
+        grid[7][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[8][sillyGooseNumber] = printNumber
+        grid[8][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
     sillyGooseNumber = 0
     while (sillyGooseNumber < 10) {
-        grid[9][sillyGooseNumber] = printNumber
+        grid[9][sillyGooseNumber] = printNumber.toString()
         printNumber--
         sillyGooseNumber++
     }
+
+    //Placing Players
+    grid[9][9] = player1 + player2.padEnd(12)
 
     //Placing Snakes and Ladders
-
-
-
+    var snakeCount = 0
+    while(snakeCount < 8) {
+        val snakes = (11..99).random()
+        println(snakes)
+        snakeCount++
+    }
 
     //Print board
     var boardCounter = 0
     var rowCounter = 0
+    var printGrid = 0
     while(boardCounter != 1) {
         printNumber = 100
         println("+------".repeat(row) + "+")
         while (printNumber > 90) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[0][printGrid]}".padEnd(6))
             printNumber--
+            printGrid++
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 81
+        printGrid = 9
         while (printNumber < 91) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[1][printGrid]}".padEnd(6))
             printNumber++
+            printGrid--
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 80
+        printGrid = 0
         while (printNumber > 70) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[2][printGrid]}".padEnd(6))
             printNumber--
+            printGrid++
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
        printNumber = 61
+        printGrid = 9
         while (printNumber < 71) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[3][printGrid]}".padEnd(6))
             printNumber++
+            printGrid--
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 60
+        printGrid = 0
         while (printNumber > 50) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[4][printGrid]}".padEnd(6))
             printNumber--
+            printGrid++
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 41
+        printGrid = 9
         while (printNumber < 51) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[5][printGrid]}".padEnd(6))
             printNumber++
+            printGrid--
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 40
+        printGrid = 0
         while (printNumber > 30) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[6][printGrid]}".padEnd(6))
             printNumber--
+            printGrid++
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 21
+        printGrid = 9
         while (printNumber < 31) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[7][printGrid]}".padEnd(6))
             printNumber++
+            printGrid--
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 20
+        printGrid = 0
         while (printNumber > 10) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[8][printGrid]}".padEnd(6))
             printNumber--
+            printGrid++
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         printNumber = 1
+        printGrid = 9
         while (printNumber < 11) {
-            print("|" + "$printNumber".padEnd(6))
+            print("|" + "  ${grid[9][printGrid]}".padEnd(6))
             printNumber++
+            printGrid--
         }
+        print("|")
         println("")
         println("+------".repeat(row) + "+")
         boardCounter++
         rowCounter++
         printNumber--
+
     }
 
-    //
+    //Moving the players
+    println("$player1Name, would you like to roll the dice?")
+    var player1Yes = readln().toString().first().uppercase()
+    if (player1Yes == "Y") {
+        var die = (1..6).random()
+        println(die)
+    }
+    else {
+        println("You silly goose you have to roll")
+        var die = (1..6).random()
+        println("here you go")
+        println(die)
+    }
+}
 
+fun getString(prompt: String): String {
+    var userInput: String
+    while(true) {
+        println(prompt)
 
+        userInput = readLine().toString()
+        if (userInput.isNotBlank()) break
+    }
+    return userInput
 }
