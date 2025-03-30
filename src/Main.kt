@@ -14,19 +14,21 @@
  * =====================================================================
  */
 
+//Textures
 const val player = "◈"
 const val empty = "·"
 const val snake = "\uD83D\uDC0D"
 const val ladder = "\uD83E\uDE9C"
-val player1 = "◈".blue()
-val player2 = "◈".red()
+val player1 = "◈".blue().padEnd(6)
+val player2 = "◈".red().padEnd(6)
 
+//Things for The Grid
 const val row = 10
 const val snakesAndLadders = 8
 
+//The Grid
+val grid = Array(10) { Array(10) { "0" } }
 fun main() {
-    //The grid
-    val grid = Array(10) { Array(10) { "0" } }
 
     //Welcome screen
     println("~".col("#FF0000") + "~".col("#FF1A00") +"~".col("#FF3300") +"~".col("#FF4D00") +"~".col("#FF6600") +"~".col("#FF8000") +"~".col("#FF9900") +"~".col("#FFB200") +"~".col("#FFCC00") +"~".col("#FFE600") +"~".col("#FFFF00") +"~".col("#E6FF00") +"~".col("#CCFF00") +"~".col("#B2FF00") +"~".col("#99FF00") +"~".col("#80FF00") +"~".col("#66FF00") +"~".col("#4DFF00") +"~".col("#33FF00") +"~".col("#1AFF00") +"~".col("#00FF00") +"~".col("#00FF1A") +"~".col("#00FF33") +"~".col("#00FF4D") +"~".col("#00FF66") +"~".col("#00FF80") +"~".col("#00FF99") +"~".col("#00FFB2") +"~".col("#00FFCC") +"~".col("#00FFFF"))
@@ -122,11 +124,57 @@ fun main() {
     }
 
     //Print board
+    printBoard()
+
+    //Moving the players
+    var playermove = ""
+    println("$player1Name, would you like to roll the dice?")
+    var player1Yes = readln().toString().first().uppercase()
+    if (player1Yes == "Y") {
+        var die = (1..6).random()
+        println(die)
+        grid[9][9 - die] = "$player1".padEnd(13)
+        printBoard()
+    }
+    else {
+        println("You silly goose you have to roll")
+        var die = (1..6).random()
+        println("here you go")
+        println(die)
+    }
+    println("$player2Name, would you like to roll the dice?")
+    var player2Yes = readln().toString().first().uppercase()
+    if (player2Yes == "Y") {
+        var die = (1..6).random()
+        println(die)
+        grid[9][9 - die] = "$player2".padEnd(13)
+        printBoard()
+    }
+    else {
+        println("You silly goose you have to roll")
+        var die = (1..6).random()
+        println("here you go")
+        println(die)
+    }
+}
+
+fun getString(prompt: String): String {
+    var userInput: String
+    while(true) {
+        println(prompt)
+
+        userInput = readLine().toString()
+        if (userInput.isNotBlank()) break
+    }
+    return userInput
+}
+
+fun printBoard() {
     var boardCounter = 0
     var rowCounter = 0
     var printGrid = 0
     while(boardCounter != 1) {
-        printNumber = 100
+        var printNumber = 100
         println("+------".repeat(row) + "+")
         while (printNumber > 90) {
             print("|" + "  ${grid[0][printGrid]}".padEnd(6))
@@ -156,7 +204,7 @@ fun main() {
         print("|")
         println("")
         println("+------".repeat(row) + "+")
-       printNumber = 61
+        printNumber = 61
         printGrid = 9
         while (printNumber < 71) {
             print("|" + "  ${grid[3][printGrid]}".padEnd(6))
@@ -229,31 +277,5 @@ fun main() {
         boardCounter++
         rowCounter++
         printNumber--
-
     }
-
-    //Moving the players
-    println("$player1Name, would you like to roll the dice?")
-    var player1Yes = readln().toString().first().uppercase()
-    if (player1Yes == "Y") {
-        var die = (1..6).random()
-        println(die)
-    }
-    else {
-        println("You silly goose you have to roll")
-        var die = (1..6).random()
-        println("here you go")
-        println(die)
-    }
-}
-
-fun getString(prompt: String): String {
-    var userInput: String
-    while(true) {
-        println(prompt)
-
-        userInput = readLine().toString()
-        if (userInput.isNotBlank()) break
-    }
-    return userInput
 }
