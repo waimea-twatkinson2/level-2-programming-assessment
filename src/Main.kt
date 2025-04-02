@@ -128,34 +128,79 @@ fun main() {
 
     //Moving the players
     var playermove = ""
-    println("$player1Name, would you like to roll the dice?")
+    var roll1 = userInput("$player1Name, press enter to roll the dice!")
     var player1Yes = readln().toString().first().uppercase()
-    if (player1Yes == "Y") {
-        var die = (1..6).random()
-        println(die)
-        grid[9][9 - die] = "$player1".padEnd(13)
+    if (player1Yes == "") {
+        var die1 = (1..6).random()
+        println(die1)
+        grid[9][9 - die1] = "$player1".padEnd(13)
         printBoard()
     }
-    else {
-        println("You silly goose you have to roll")
-        var die = (1..6).random()
-        println("here you go")
-        println(die)
-    }
-    println("$player2Name, would you like to roll the dice?")
+    println("$player2Name, press enter to roll the dice!")
     var player2Yes = readln().toString().first().uppercase()
     if (player2Yes == "Y") {
-        var die = (1..6).random()
-        println(die)
-        grid[9][9 - die] = "$player2".padEnd(13)
+        var die2 = (1..6).random()
+        println(die2)
+        grid[9][9 - die2] = "$player2".padEnd(13)
         printBoard()
     }
-    else {
-        println("You silly goose you have to roll")
-        var die = (1..6).random()
-        println("here you go")
-        println(die)
+
+
+    var findingPlayer1 = false
+    var playerNumber = 0
+    while (findingPlayer1 == false) {
+        while (playerNumber < 10) {
+            println(grid[0][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[1][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[2][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[3][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[4][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[5][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[6][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[7][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[8][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        playerNumber = 0
+        while (playerNumber < 10) {
+            println(grid[9][playerNumber].contains(player1.padEnd(13)))
+            playerNumber++
+        }
+        break
     }
+
 }
 
 fun getString(prompt: String): String {
@@ -279,3 +324,4 @@ fun printBoard() {
         printNumber--
     }
 }
+
