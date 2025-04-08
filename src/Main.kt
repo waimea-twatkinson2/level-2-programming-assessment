@@ -22,6 +22,12 @@ const val ladder = "\uD83E\uDE9C"
 val player1 = "◈".blue().padEnd(6)
 val player2 = "◈".red().padEnd(6)
 
+var win = false
+
+//Player thingies
+var player1Name = ""
+var player2Name = ""
+
 //Things for The Grid
 const val row = 10
 const val snakesAndLadders = 8
@@ -31,13 +37,36 @@ val grid = Array(10) { Array(10) { "0" } }
 fun main() {
 
     //Welcome screen
-    println("~".col("#FF0000") + "~".col("#FF1A00") +"~".col("#FF3300") +"~".col("#FF4D00") +"~".col("#FF6600") +"~".col("#FF8000") +"~".col("#FF9900") +"~".col("#FFB200") +"~".col("#FFCC00") +"~".col("#FFE600") +"~".col("#FFFF00") +"~".col("#E6FF00") +"~".col("#CCFF00") +"~".col("#B2FF00") +"~".col("#99FF00") +"~".col("#80FF00") +"~".col("#66FF00") +"~".col("#4DFF00") +"~".col("#33FF00") +"~".col("#1AFF00") +"~".col("#00FF00") +"~".col("#00FF1A") +"~".col("#00FF33") +"~".col("#00FF4D") +"~".col("#00FF66") +"~".col("#00FF80") +"~".col("#00FF99") +"~".col("#00FFB2") +"~".col("#00FFCC") +"~".col("#00FFFF"))
+    println(
+        "~".col("#FF0000") + "~".col("#FF1A00") + "~".col("#FF3300") + "~".col("#FF4D00") + "~".col("#FF6600") + "~".col(
+            "#FF8000"
+        ) + "~".col("#FF9900") + "~".col("#FFB200") + "~".col("#FFCC00") + "~".col("#FFE600") + "~".col("#FFFF00") + "~".col(
+            "#E6FF00"
+        ) + "~".col("#CCFF00") + "~".col("#B2FF00") + "~".col("#99FF00") + "~".col("#80FF00") + "~".col("#66FF00") + "~".col(
+            "#4DFF00"
+        ) + "~".col("#33FF00") + "~".col("#1AFF00") + "~".col("#00FF00") + "~".col("#00FF1A") + "~".col("#00FF33") + "~".col(
+            "#00FF4D"
+        ) + "~".col("#00FF66") + "~".col("#00FF80") + "~".col("#00FF99") + "~".col("#00FFB2") + "~".col("#00FFCC") + "~".col(
+            "#00FFFF"
+        )
+    )
     println("Welcome to Snakes and Ladders!".col("#FFFFFF"))
-    println("~".col("#00FFFF") + "~".col("#00FFCC") +"~".col("#00FFB2") +"~".col("#00FF99") +"~".col("#00FF80") +"~".col("#00FF66") +"~".col("#00FF4D") +"~".col("#00FF33") +"~".col("#00FF1A") +"~".col("#00FF00") +"~".col("#1AFF00") +"~".col("#33FF00") +"~".col("#4DFF00") +"~".col("#66FF00") +"~".col("#80FF00") +"~".col("#99FF00") +"~".col("#B2FF00") +"~".col("#CCFF00") +"~".col("#E6FF00") +"~".col("#FFFF00") +"~".col("#FFE600") +"~".col("#FFCC00") +"~".col("#FFB200") +"~".col("#FF9900") +"~".col("#FF8000") +"~".col("#FF6600") +"~".col("#FF4D00") +"~".col("#FF3300") +"~".col("#FF1A00") +"~".col("#FF0000"))
+    println(
+        "~".col("#00FFFF") + "~".col("#00FFCC") + "~".col("#00FFB2") + "~".col("#00FF99") + "~".col("#00FF80") + "~".col(
+            "#00FF66"
+        ) + "~".col("#00FF4D") + "~".col("#00FF33") + "~".col("#00FF1A") + "~".col("#00FF00") + "~".col("#1AFF00") + "~".col(
+            "#33FF00"
+        ) + "~".col("#4DFF00") + "~".col("#66FF00") + "~".col("#80FF00") + "~".col("#99FF00") + "~".col("#B2FF00") + "~".col(
+            "#CCFF00"
+        ) + "~".col("#E6FF00") + "~".col("#FFFF00") + "~".col("#FFE600") + "~".col("#FFCC00") + "~".col("#FFB200") + "~".col(
+            "#FF9900"
+        ) + "~".col("#FF8000") + "~".col("#FF6600") + "~".col("#FF4D00") + "~".col("#FF3300") + "~".col("#FF1A00") + "~".col(
+            "#FF0000"
+        )
+    )
 
     //Player names
-    val player1Name = getString("Player 1 enter your name: ")
-    val player2Name = getString("Player 2 enter your name: ")
+    getNames()
     println("Welcome, $player1Name and $player2Name")
     println()
 
@@ -117,7 +146,7 @@ fun main() {
 
     //Placing Snakes and Ladders
     var snakeCount = 0
-    while(snakeCount < 8) {
+    while (snakeCount < 8) {
         val snakes = (11..99).random()
         println(snakes)
         snakeCount++
@@ -126,81 +155,70 @@ fun main() {
     //Print board
     printBoard()
 
-    //Moving the players
-    var playermove = ""
-    var roll1 = userInput("$player1Name, press enter to roll the dice!")
-    var player1Yes = readln().toString().first().uppercase()
-    if (player1Yes == "") {
-        var die1 = (1..6).random()
-        println(die1)
-        grid[9][9 - die1] = "$player1".padEnd(13)
-        printBoard()
-    }
-    println("$player2Name, press enter to roll the dice!")
-    var player2Yes = readln().toString().first().uppercase()
-    if (player2Yes == "Y") {
-        var die2 = (1..6).random()
-        println(die2)
-        grid[9][9 - die2] = "$player2".padEnd(13)
-        printBoard()
-    }
+    while (!win) {
+        //Moving the players
+        var playermove = 0
+        cont("$player1Name, press enter to roll the dice!")
+        contt("$player2Name, press enter to roll the dice!")
 
 
-    var findingPlayer1 = false
-    var playerNumber = 0
-    while (findingPlayer1 == false) {
+        /**var findingPlayer1 = false
+        var playerNumber = 0
+        while (findingPlayer1 == false) {
         while (playerNumber < 10) {
-            println(grid[0][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[0][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[1][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[1][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[2][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[2][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[3][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[3][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[4][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[4][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[5][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[5][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[6][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[6][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[7][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[7][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[8][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[8][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         playerNumber = 0
         while (playerNumber < 10) {
-            println(grid[9][playerNumber].contains(player1.padEnd(13)))
-            playerNumber++
+        println(grid[9][playerNumber].contains(player1.padEnd(13)))
+        playerNumber++
         }
         break
-    }
+        }
+         */
 
+    }
 }
 
 fun getString(prompt: String): String {
@@ -219,6 +237,11 @@ fun printBoard() {
     var rowCounter = 0
     var printGrid = 0
     while(boardCounter != 1) {
+        var numby = 0
+        while (numby < 50) {
+            println("")
+            numby++
+        }
         var printNumber = 100
         println("+------".repeat(row) + "+")
         while (printNumber > 90) {
@@ -325,3 +348,37 @@ fun printBoard() {
     }
 }
 
+fun cont(prompt: String): String {
+    var userInput: String
+    while(true) {
+        println(prompt)
+
+        userInput = readLine().toString()
+        if (userInput.isBlank()) break
+    }
+    var die1 = (1..6).random()
+    println(die1)
+    grid[9][9 - die1] = "$player1".padEnd(13)
+    printBoard()
+    return ""
+}
+
+fun contt(prompt: String): String {
+    var userInput: String
+    while(true) {
+        println(prompt)
+
+        userInput = readLine().toString()
+        if (userInput.isBlank()) break
+    }
+    var die2 = (1..6).random()
+    println(die2)
+    grid[9][9 - die2] = "$player2".padEnd(13)
+    printBoard()
+    return ""
+}
+
+fun getNames() {
+    player1Name = getString("Player 1 enter your name: ")
+    player2Name = getString("Player 2 enter your name: ")
+}
