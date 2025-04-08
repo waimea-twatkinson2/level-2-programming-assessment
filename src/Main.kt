@@ -37,33 +37,9 @@ val grid = Array(10) { Array(10) { "0" } }
 fun main() {
 
     //Welcome screen
-    println(
-        "~".col("#FF0000") + "~".col("#FF1A00") + "~".col("#FF3300") + "~".col("#FF4D00") + "~".col("#FF6600") + "~".col(
-            "#FF8000"
-        ) + "~".col("#FF9900") + "~".col("#FFB200") + "~".col("#FFCC00") + "~".col("#FFE600") + "~".col("#FFFF00") + "~".col(
-            "#E6FF00"
-        ) + "~".col("#CCFF00") + "~".col("#B2FF00") + "~".col("#99FF00") + "~".col("#80FF00") + "~".col("#66FF00") + "~".col(
-            "#4DFF00"
-        ) + "~".col("#33FF00") + "~".col("#1AFF00") + "~".col("#00FF00") + "~".col("#00FF1A") + "~".col("#00FF33") + "~".col(
-            "#00FF4D"
-        ) + "~".col("#00FF66") + "~".col("#00FF80") + "~".col("#00FF99") + "~".col("#00FFB2") + "~".col("#00FFCC") + "~".col(
-            "#00FFFF"
-        )
-    )
+    println("~".col("#FF0000") + "~".col("#FF1A00") + "~".col("#FF3300") + "~".col("#FF4D00") + "~".col("#FF6600") + "~".col("#FF8000") + "~".col("#FF9900") + "~".col("#FFB200") + "~".col("#FFCC00") + "~".col("#FFE600") + "~".col("#FFFF00") + "~".col("#E6FF00") + "~".col("#CCFF00") + "~".col("#B2FF00") + "~".col("#99FF00") + "~".col("#80FF00") + "~".col("#66FF00") + "~".col("#4DFF00") + "~".col("#33FF00") + "~".col("#1AFF00") + "~".col("#00FF00") + "~".col("#00FF1A") + "~".col("#00FF33") + "~".col("#00FF4D") + "~".col("#00FF66") + "~".col("#00FF80") + "~".col("#00FF99") + "~".col("#00FFB2") + "~".col("#00FFCC") + "~".col("#00FFFF"))
     println("Welcome to Snakes and Ladders!".col("#FFFFFF"))
-    println(
-        "~".col("#00FFFF") + "~".col("#00FFCC") + "~".col("#00FFB2") + "~".col("#00FF99") + "~".col("#00FF80") + "~".col(
-            "#00FF66"
-        ) + "~".col("#00FF4D") + "~".col("#00FF33") + "~".col("#00FF1A") + "~".col("#00FF00") + "~".col("#1AFF00") + "~".col(
-            "#33FF00"
-        ) + "~".col("#4DFF00") + "~".col("#66FF00") + "~".col("#80FF00") + "~".col("#99FF00") + "~".col("#B2FF00") + "~".col(
-            "#CCFF00"
-        ) + "~".col("#E6FF00") + "~".col("#FFFF00") + "~".col("#FFE600") + "~".col("#FFCC00") + "~".col("#FFB200") + "~".col(
-            "#FF9900"
-        ) + "~".col("#FF8000") + "~".col("#FF6600") + "~".col("#FF4D00") + "~".col("#FF3300") + "~".col("#FF1A00") + "~".col(
-            "#FF0000"
-        )
-    )
+    println("~".col("#00FFFF") + "~".col("#00FFCC") + "~".col("#00FFB2") + "~".col("#00FF99") + "~".col("#00FF80") + "~".col("#00FF66") + "~".col("#00FF4D") + "~".col("#00FF33") + "~".col("#00FF1A") + "~".col("#00FF00") + "~".col("#1AFF00") + "~".col("#33FF00") + "~".col("#4DFF00") + "~".col("#66FF00") + "~".col("#80FF00") + "~".col("#99FF00") + "~".col("#B2FF00") + "~".col("#CCFF00") + "~".col("#E6FF00") + "~".col("#FFFF00") + "~".col("#FFE600") + "~".col("#FFCC00") + "~".col("#FFB200") + "~".col("#FF9900") + "~".col("#FF8000") + "~".col("#FF6600") + "~".col("#FF4D00") + "~".col("#FF3300") + "~".col("#FF1A00") + "~".col("#FF0000"))
 
     //Player names
     getNames()
@@ -356,6 +332,7 @@ fun cont(prompt: String): String {
         userInput = readLine().toString()
         if (userInput.isBlank()) break
     }
+    var swapPlace = 
     var die1 = (1..6).random()
     println(die1)
     grid[9][9 - die1] = "$player1".padEnd(13)
