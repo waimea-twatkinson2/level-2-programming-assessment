@@ -27,6 +27,10 @@ var win = false
 //Player thingies
 var player1Name = ""
 var player2Name = ""
+var player1Row = 9
+var player2Row = 9
+var player1Column = 9
+var player2Column = 9
 
 //Things for The Grid
 const val row = 10
@@ -55,67 +59,7 @@ fun main() {
     println()
 
     //Assigning numbers to grid
-    var sillyGooseNumber = 0
-    var printNumber = 100
-    while (sillyGooseNumber < 10) {
-        grid[0][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[1][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[2][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[3][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[4][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[5][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[6][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[7][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[8][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
-    sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[9][sillyGooseNumber] = printNumber.toString()
-        printNumber--
-        sillyGooseNumber++
-    }
+    sillyGoose()
 
     //Placing Players
     grid[9][9] = player1 + player2.padEnd(12)
@@ -127,7 +71,6 @@ fun main() {
         println(snakes)
         snakeCount++
     }
-
     //Print board
     printBoard()
 
@@ -196,7 +139,7 @@ fun main() {
 
     }
 }
-
+//Getting user input
 fun getString(prompt: String): String {
     var userInput: String
     while(true) {
@@ -208,6 +151,7 @@ fun getString(prompt: String): String {
     return userInput
 }
 
+//Printing game board
 fun printBoard() {
     var boardCounter = 0
     var rowCounter = 0
@@ -324,6 +268,7 @@ fun printBoard() {
     }
 }
 
+//Continuing after player1 says to roll
 fun cont(prompt: String): String {
     var userInput: String
     while(true) {
@@ -332,14 +277,27 @@ fun cont(prompt: String): String {
         userInput = readLine().toString()
         if (userInput.isBlank()) break
     }
-    var swapPlace = 
+    var swapPlace = player1
+    sillyGoose()
     var die1 = (1..6).random()
     println(die1)
-    grid[9][9 - die1] = "$player1".padEnd(13)
-    printBoard()
+    var diceWork = player1Column - die1
+    println(diceWork)
+    if (diceWork < 0) {
+        player1Column = 9 - (diceWork * -1) + 1
+        grid[player1Row][player1Column] = player1.padEnd(13)
+        goUpRow1()
+        printBoard()
+    }
+    else {
+        grid[player1Row][diceWork] = player1.padEnd(13)
+        player1Column = diceWork
+        printBoard()
+    }
     return ""
 }
 
+//Continuing after player2 says to roll
 fun contt(prompt: String): String {
     var userInput: String
     while(true) {
@@ -348,14 +306,103 @@ fun contt(prompt: String): String {
         userInput = readLine().toString()
         if (userInput.isBlank()) break
     }
+    var swapPlace = player2
+    sillyGoose()
     var die2 = (1..6).random()
     println(die2)
-    grid[9][9 - die2] = "$player2".padEnd(13)
-    printBoard()
+    var diceWork = player2Column - die2
+    println(diceWork)
+    if (diceWork < 0) {
+        player2Column = 9 - (diceWork * -1) + 1
+        grid[player2Row][player2Column] = player2.padEnd(13)
+        goUpRow2()
+        printBoard()
+    }
+    else {
+        grid[player2Row][diceWork] = player2.padEnd(13)
+        player2Column = diceWork
+        printBoard()
+    }
     return ""
 }
 
+//Getting player names
 fun getNames() {
     player1Name = getString("Player 1 enter your name: ")
     player2Name = getString("Player 2 enter your name: ")
+}
+
+//assigning numbers to board
+fun sillyGoose() {
+    var sillyGooseNumber = 0
+    var printNumber = 100
+    while (sillyGooseNumber < 10) {
+        grid[0][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[1][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[2][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[3][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[4][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[5][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[6][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[7][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[8][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+    sillyGooseNumber = 0
+    while (sillyGooseNumber < 10) {
+        grid[9][sillyGooseNumber] = printNumber.toString()
+        printNumber--
+        sillyGooseNumber++
+    }
+}
+
+//moving up rows
+fun goUpRow1() {
+    player1Row--
+    grid[player1Row][player1Column] = player1.padEnd(13)
+}
+fun goUpRow2() {
+    player2Row--
+    grid[player2Row][player2Column] = player2.padEnd(13)
 }
