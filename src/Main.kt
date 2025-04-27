@@ -274,38 +274,94 @@ fun printBoard() {
 
 
 //Continuing after player1 says to roll
-fun cont(prompt: String) {
-    val die = (1..6).random()
-    println(die)
-    val newCol = player1Column - die
-    sillyGoose()
-    if (newCol < 0) {
-        player1Column = 9 - (newCol * -1)
-        goUpRow1()
+fun cont(prompt: String): String {
+    if (player1Tile < 100) {
+        var userInput: String
+        while (true) {
+            println(prompt)
+
+            userInput = readLine().toString()
+            if (userInput.isBlank()) break
+        }
+        sillyGoose()
+        val die = (1..6).random()
+        println(die)
+        player1Tile = player1Tile + die
+        val row = 9 - (player1Tile - 1) / 10
+        var col = player1Tile.toString().last()
+        var coll = 9 - (col.digitToInt() - 1)
+        val row2 = 9 - (player2Tile - 1) / 10
+        var col2 = player2Tile.toString().last()
+        var coll2 = 9 - (col2.digitToInt() - 1)
+        if (coll == 10) {
+            coll = 0
+        }
+        grid[row][coll] = player1.padEnd(13)
+        grid[row2][coll2] = player2.padEnd(13)
+        if (player1Tile == player2Tile) {
+            val row = 9 - (player1Tile - 1) / 10
+            var col = player1Tile.toString().last()
+            var coll = 9 - (col.digitToInt() - 1)
+            val row2 = 9 - (player2Tile - 1) / 10
+            var col2 = player2Tile.toString().last()
+            var coll2 = 9 - (col2.digitToInt() - 1)
+            grid[row][coll] = player1 + player2.padEnd(12)
+        }
+        printBoard()
+        println(die)
+        println("[$row],[$coll]")
     }
-    else {
-        player1Column = newCol
+    else if (player1Tile >= 100) {
+        win()
     }
-    grid[player1Row][player1Column] = player1.padEnd(13)
-    printBoard()
+    return ""
 }
 
 
 //Continuing after player2 says to roll
-fun contt(prompt: String) {
-    val die = (1..6).random()
-    println(die)
-    val newCol = player2Column - die
-    sillyGoose()
-    if (newCol < 0) {
-        player2Column = 9 - (newCol * -1)
-        goUpRow1()
+fun contt(prompt: String): String {
+    if (player2Tile < 100) {
+        var userInput: String
+        while (true) {
+            println(prompt)
+
+            userInput = readLine().toString()
+            if (userInput.isBlank()) break
+        }
+        sillyGoose()
+        val die = (1..6).random()
+        println(die)
+        player2Tile = player2Tile + die
+        val row = 9 - (player1Tile - 1) / 10
+        val col = player1Tile.toString().last()
+        val coll = 9 - (col.digitToInt() - 1)
+        val row2 = 9 - (player2Tile - 1) / 10
+        val col2 = player2Tile.toString().last()
+        var coll2 = 9 - (col2.digitToInt() - 1)
+        if (coll2 == 10) {
+            coll2 = 0
+        }
+        if (player1Tile == player2Tile) {
+            val roww = 9 - (player1Tile - 1) / 10
+            val coll = player1Tile.toString().last()
+            val colll = 9 - (col.digitToInt() - 1)
+            val row22 = 9 - (player2Tile - 1) / 10
+            val col22 = player2Tile.toString().last()
+            var coll22 = 9 - (col2.digitToInt() - 1)
+            grid[row][coll] = player1 + player2.padEnd(12)
+        }
+        else {
+            grid[row][coll] = player1.padEnd(13)
+            grid[row2][coll2] = player2.padEnd(13)
+        }
+        printBoard()
+        println(die)
+        println("[$row],[$coll]")
     }
-    else {
-        player2Column = newCol
+    else if (player1Tile >= 100) {
+        win()
     }
-    grid[player2Row][player2Column] = player2.padEnd(13)
-    printBoard()
+    return ""
 }
 
 //Getting player names
@@ -316,52 +372,6 @@ fun getNames() {
 
 //placing snakes
 
-
-//clear board
-fun clearboard() {
-    var sillyGooseNumber = 0
-    while (sillyGooseNumber < 10) {
-        grid[0][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 20) {
-        grid[1][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 30) {
-        grid[2][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 40) {
-        grid[3][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 50) {
-        grid[4][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 60) {
-        grid[5][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 70) {
-        grid[6][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 80) {
-        grid[7][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 90) {
-        grid[8][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-    while (sillyGooseNumber < 100) {
-        grid[9][sillyGooseNumber] = ""
-        sillyGooseNumber++
-    }
-
-}
 
 //assigning numbers to board
 fun sillyGoose() {
@@ -438,4 +448,22 @@ fun goUpRow2() {
     player2Row--
     grid[player2Row][player2Column] = player2.padEnd(13)
     println(player2Row)
+}
+
+//actually winning
+fun win() {
+    if (player1Tile >= 100) {
+        win = true
+        val winner1Name = player1Name.length
+        println("~".repeat(28 + winner1Name))
+        println("Congratulations $player1Name, you win!!!")
+        println("~".repeat(28 + winner1Name))
+    }
+    else if (player2Tile >= 100) {
+        win = true
+        val winner2Name = player2Name.length
+        println("~".repeat(28 + winner2Name))
+        println("Congratulations $player2Name, you win!!!")
+        println("~".repeat(28 + winner2Name))
+    }
 }
