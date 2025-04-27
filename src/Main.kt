@@ -1,3 +1,5 @@
+import kotlin.system.exitProcess
+
 /**
  * =====================================================================
  * Programming Project for NCEA Level 2, Standard 91896
@@ -62,7 +64,14 @@ fun main() {
     println("Snake: ".padEnd(10) + snake)
     println("Ladder: ".padEnd(10) + ladder)
     println()
-
+    println()
+    println()
+    println()
+    println("~~~~~~~~~~~~~~~~~~~~")
+    println("Press enter to play!")
+    println("~~~~~~~~~~~~~~~~~~~~")
+    enterContinue("")
+    println()
     //Assigning numbers to grid
     sillyGoose()
 
@@ -283,21 +292,34 @@ fun cont(prompt: String): String {
             userInput = readLine().toString()
             if (userInput.isBlank()) break
         }
+        //resetting the numbers
         sillyGoose()
+        //rolling the dice
         val die = (1..6).random()
         println(die)
+        //updating the players location
         player1Tile = player1Tile + die
+        //finding grid locations of the players
         val row = 9 - (player1Tile - 1) / 10
         var col = player1Tile.toString().last()
         var coll = 9 - (col.digitToInt() - 1)
         val row2 = 9 - (player2Tile - 1) / 10
         var col2 = player2Tile.toString().last()
         var coll2 = 9 - (col2.digitToInt() - 1)
+        //bug fixing
         if (coll == 10) {
+            println(coll)
             coll = 0
         }
+        if (coll2 == 10) {
+            coll2 = 0
+        }
+        //wincheck
+        win()
+        //assigning the player to their square
         grid[row][coll] = player1.padEnd(13)
         grid[row2][coll2] = player2.padEnd(13)
+        //preparing for the players to be on the same square
         if (player1Tile == player2Tile) {
             val row = 9 - (player1Tile - 1) / 10
             var col = player1Tile.toString().last()
@@ -305,14 +327,13 @@ fun cont(prompt: String): String {
             val row2 = 9 - (player2Tile - 1) / 10
             var col2 = player2Tile.toString().last()
             var coll2 = 9 - (col2.digitToInt() - 1)
+            println("[$row],[$coll]")
             grid[row][coll] = player1 + player2.padEnd(12)
         }
+        //showing things
         printBoard()
         println(die)
         println("[$row],[$coll]")
-    }
-    else if (player1Tile >= 100) {
-        win()
     }
     return ""
 }
@@ -328,38 +349,48 @@ fun contt(prompt: String): String {
             userInput = readLine().toString()
             if (userInput.isBlank()) break
         }
+        //resetting the numbers
         sillyGoose()
+        //rolling the dice
         val die = (1..6).random()
         println(die)
+        //updating the players location
         player2Tile = player2Tile + die
+        //finding grid locations of the players
         val row = 9 - (player1Tile - 1) / 10
-        val col = player1Tile.toString().last()
-        val coll = 9 - (col.digitToInt() - 1)
+        var col = player1Tile.toString().last()
+        var coll = 9 - (col.digitToInt() - 1)
         val row2 = 9 - (player2Tile - 1) / 10
-        val col2 = player2Tile.toString().last()
+        var col2 = player2Tile.toString().last()
         var coll2 = 9 - (col2.digitToInt() - 1)
+        //bug fixing
+        if (coll == 10) {
+            println(coll)
+            coll = 0
+        }
         if (coll2 == 10) {
             coll2 = 0
         }
+        //wincheck
+        win()
+        //assigning the player to their square
+        grid[row2][coll2] = player2.padEnd(13)
+        grid[row][coll] = player1.padEnd(13)
+        //preparing for the players to be on the same square
         if (player1Tile == player2Tile) {
-            val roww = 9 - (player1Tile - 1) / 10
-            val coll = player1Tile.toString().last()
-            val colll = 9 - (col.digitToInt() - 1)
-            val row22 = 9 - (player2Tile - 1) / 10
-            val col22 = player2Tile.toString().last()
-            var coll22 = 9 - (col2.digitToInt() - 1)
-            grid[row][coll] = player1 + player2.padEnd(12)
+            val row = 9 - (player1Tile - 1) / 10
+            var col = player1Tile.toString().last()
+            var coll = 9 - (col.digitToInt() - 1)
+            val row2 = 9 - (player2Tile - 1) / 10
+            var col2 = player2Tile.toString().last()
+            var coll2 = 9 - (col2.digitToInt() - 1)
+            println("[$row],[$coll]")
+            grid[row2][coll2] = player1 + player2.padEnd(12)
         }
-        else {
-            grid[row][coll] = player1.padEnd(13)
-            grid[row2][coll2] = player2.padEnd(13)
-        }
+        //showing things
         printBoard()
         println(die)
         println("[$row],[$coll]")
-    }
-    else if (player1Tile >= 100) {
-        win()
     }
     return ""
 }
@@ -371,7 +402,24 @@ fun getNames() {
 }
 
 //placing snakes
-
+fun snakeplace() {
+    val snake0 = (11..99).random()
+    var snake1 = (11..99).random()
+    var snake2 = (11..99).random()
+    var snake3 = (11..99).random()
+    var snake4 = (11..99).random()
+    var snake5 = (11..99).random()
+    var snake6 = (11..99).random()
+    var snake7 = (11..99).random()
+    if (snake0 == snake1) { snake1 = snake1 + 15 } else if (snake0 == snake2) { snake2 = snake2 + 15 } else if (snake0 == snake3) { snake3 = snake3 + 15 } else if (snake0 == snake4) { snake4 = snake4 + 15 } else if (snake0 == snake5) { snake5 = snake5 + 15 } else if (snake0 == snake6) { snake6 = snake6 + 15 } else if (snake0 == snake7) { snake7 = snake7 + 15 }
+    if (snake1 == snake0) { snake1 = snake1 + 15 } else if (snake1 == snake2) { snake1 = snake2 + 15 } else if (snake1 == snake3) { snake1 = snake3 + 15 } else if (snake1 == snake4) { snake1 = snake4 + 15 } else if (snake1 == snake5) { snake1 = snake5 + 15 } else if (snake1 == snake6) { snake1 = snake6 + 15 } else if (snake1 == snake7) { snake1 = snake7 + 15 }
+    if (snake2 == snake1) { snake2 = snake1 + 15 } else if (snake2 == snake0) { snake2 = snake0 + 15 } else if (snake2 == snake3) { snake2 = snake3 + 15 } else if (snake2 == snake4) { snake2 = snake4 + 15 } else if (snake2 == snake5) { snake2 = snake5 + 15 } else if (snake2 == snake6) { snake2 = snake6 + 15 } else if (snake2 == snake7) { snake2 = snake7 + 15 }
+    if (snake3 == snake1) { snake3 = snake1 + 15 } else if (snake3 == snake2) { snake3 = snake2 + 15 } else if (snake3 == snake0) { snake3 = snake0 + 15 } else if (snake3 == snake4) { snake3 = snake4 + 15 } else if (snake3 == snake5) { snake3 = snake5 + 15 } else if (snake3 == snake6) { snake3 = snake6 + 15 } else if (snake3 == snake7) { snake3 = snake7 + 15 }
+    if (snake4 == snake1) { snake4 = snake1 + 15 } else if (snake4 == snake2) { snake4 = snake2 + 15 } else if (snake4 == snake3) { snake4 = snake3 + 15 } else if (snake4 == snake0) { snake4 = snake0 + 15 } else if (snake4 == snake5) { snake4 = snake5 + 15 } else if (snake4 == snake6) { snake4 = snake6 + 15 } else if (snake4 == snake7) { snake4 = snake7 + 15 }
+    if (snake5 == snake1) { snake5 = snake1 + 15 } else if (snake5 == snake2) { snake5 = snake2 + 15 } else if (snake5 == snake3) { snake5 = snake3 + 15 } else if (snake5 == snake4) { snake5 = snake4 + 15 } else if (snake5 == snake0) { snake5 = snake0 + 15 } else if (snake5 == snake6) { snake5 = snake6 + 15 } else if (snake5 == snake7) { snake5 = snake7 + 15 }
+    if (snake6 == snake1) { snake6 = snake1 + 15 } else if (snake6 == snake2) { snake6 = snake2 + 15 } else if (snake6 == snake3) { snake6 = snake3 + 15 } else if (snake6 == snake4) { snake6 = snake4 + 15 } else if (snake6 == snake5) { snake6 = snake5 + 15 } else if (snake6 == snake0) { snake6 = snake0 + 15 } else if (snake6 == snake7) { snake6 = snake7 + 15 }
+    if (snake7 == snake1) { snake7 = snake1 + 15 } else if (snake7 == snake2) { snake7 = snake2 + 15 } else if (snake7 == snake3) { snake7 = snake3 + 15 } else if (snake7 == snake4) { snake7 = snake4 + 15 } else if (snake7 == snake5) { snake7 = snake5 + 15 } else if (snake7 == snake6) { snake7 = snake6 + 15 } else if (snake7 == snake0) { snake7 = snake0 + 15 }
+}
 
 //assigning numbers to board
 fun sillyGoose() {
@@ -452,18 +500,32 @@ fun goUpRow2() {
 
 //actually winning
 fun win() {
-    if (player1Tile >= 100) {
+    if (player1Tile > 99) {
         win = true
         val winner1Name = player1Name.length
         println("~".repeat(28 + winner1Name))
         println("Congratulations $player1Name, you win!!!")
         println("~".repeat(28 + winner1Name))
+        exitProcess(0)
     }
-    else if (player2Tile >= 100) {
+    else if (player2Tile > 99) {
         win = true
         val winner2Name = player2Name.length
         println("~".repeat(28 + winner2Name))
         println("Congratulations $player2Name, you win!!!")
         println("~".repeat(28 + winner2Name))
+        exitProcess(0)
     }
+}
+
+//continuing things
+fun enterContinue(prompt: String): String {
+    var userInput: String
+    while (true) {
+        println(prompt)
+
+        userInput = readLine().toString()
+        if (userInput.isBlank()) break
+    }
+    return ""
 }
