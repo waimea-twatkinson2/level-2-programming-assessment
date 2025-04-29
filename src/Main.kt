@@ -39,6 +39,14 @@ var player2Tile = 1
 //Things for The Grid
 const val row = 10
 const val snakesAndLadders = 8
+var snake0 = 0
+var snake1 = 0
+var snake2 = 0
+var snake3 = 0
+var snake4 = 0
+var snake5 = 0
+var snake6 = 0
+var snake7 = 0
 
 //Haha global variables go brrrrrrrr
 
@@ -79,6 +87,8 @@ fun main() {
     grid[9][9] = player1 + player2.padEnd(12)
 
     //Placing Snakes and Ladders
+    snakeNums()
+    snakePlace()
 
     //Print board
     printBoard()
@@ -300,7 +310,7 @@ fun cont(prompt: String): String {
         //updating the players location
         player1Tile = player1Tile + die
         //finding grid locations of the players
-        val row = 9 - (player1Tile - 1) / 10
+        var row = 9 - (player1Tile - 1) / 10
         var col = player1Tile.toString().last()
         var coll = 9 - (col.digitToInt() - 1)
         val row2 = 9 - (player2Tile - 1) / 10
@@ -316,9 +326,19 @@ fun cont(prompt: String): String {
         }
         //wincheck
         win()
+        //checking for snake
+        if (player1Tile == snake0 || player1Tile == snake1 || player1Tile == snake2 || player1Tile == snake3 || player1Tile == snake4 || player1Tile == snake5 || player1Tile == snake6 || player1Tile == snake7)  {
+            player1Tile - (5..30).random()
+            row = 9 - (player1Tile - 1) / 10
+            col = player1Tile.toString().last()
+            coll = 9 - (col.digitToInt() - 1)
+            grid[row][coll] = player1.padEnd(13)
+        }
         //assigning the player to their square
-        grid[row][coll] = player1.padEnd(13)
-        grid[row2][coll2] = player2.padEnd(13)
+        else {
+            grid[row][coll] = player1.padEnd(13)
+            grid[row2][coll2] = player2.padEnd(13)
+        }
         //preparing for the players to be on the same square
         if (player1Tile == player2Tile) {
             val row = 9 - (player1Tile - 1) / 10
@@ -330,7 +350,16 @@ fun cont(prompt: String): String {
             println("[$row],[$coll]")
             grid[row][coll] = player1 + player2.padEnd(12)
         }
+        if (player1Tile < 1) {
+            player1Tile = 1
+            row = 9 - (player1Tile - 1) / 10
+            col = player1Tile.toString().last()
+            coll = 9 - (col.digitToInt() - 1)
+            grid[row][coll] = player1.padEnd(13)
+
+        }
         //showing things
+        snakePlace()
         printBoard()
         println(die)
         println("[$row],[$coll]")
@@ -357,10 +386,10 @@ fun contt(prompt: String): String {
         //updating the players location
         player2Tile = player2Tile + die
         //finding grid locations of the players
-        val row = 9 - (player1Tile - 1) / 10
+        var row = 9 - (player1Tile - 1) / 10
         var col = player1Tile.toString().last()
         var coll = 9 - (col.digitToInt() - 1)
-        val row2 = 9 - (player2Tile - 1) / 10
+        var row2 = 9 - (player2Tile - 1) / 10
         var col2 = player2Tile.toString().last()
         var coll2 = 9 - (col2.digitToInt() - 1)
         //bug fixing
@@ -373,9 +402,19 @@ fun contt(prompt: String): String {
         }
         //wincheck
         win()
+        //checking for snake
+        if (player2Tile == snake0 || player2Tile == snake1 || player2Tile == snake2 || player2Tile == snake3 || player2Tile == snake4 || player2Tile == snake5 || player2Tile == snake6 || player2Tile == snake7)  {
+            player2Tile - (5..30).random()
+            row2 = 9 - (player2Tile - 1) / 10
+            col2 = player2Tile.toString().last()
+            coll2 = 9 - (col.digitToInt() - 1)
+            grid[row][coll] = player2.padEnd(13)
+        }
         //assigning the player to their square
-        grid[row2][coll2] = player2.padEnd(13)
-        grid[row][coll] = player1.padEnd(13)
+        else {
+            grid[row][coll] = player1.padEnd(13)
+            grid[row2][coll2] = player2.padEnd(13)
+        }
         //preparing for the players to be on the same square
         if (player1Tile == player2Tile) {
             val row = 9 - (player1Tile - 1) / 10
@@ -385,9 +424,18 @@ fun contt(prompt: String): String {
             var col2 = player2Tile.toString().last()
             var coll2 = 9 - (col2.digitToInt() - 1)
             println("[$row],[$coll]")
-            grid[row2][coll2] = player1 + player2.padEnd(12)
+            grid[row][coll] = player1 + player2.padEnd(12)
+        }
+        if (player2Tile < 1) {
+            player2Tile = 1
+            row = 9 - (player2Tile - 1) / 10
+            col = player2Tile.toString().last()
+            coll = 9 - (col.digitToInt() - 1)
+            grid[row][coll] = player2.padEnd(13)
+
         }
         //showing things
+        snakePlace()
         printBoard()
         println(die)
         println("[$row],[$coll]")
@@ -402,23 +450,87 @@ fun getNames() {
 }
 
 //placing snakes
-fun snakeplace() {
-    val snake0 = (11..99).random()
-    var snake1 = (11..99).random()
-    var snake2 = (11..99).random()
-    var snake3 = (11..99).random()
-    var snake4 = (11..99).random()
-    var snake5 = (11..99).random()
-    var snake6 = (11..99).random()
-    var snake7 = (11..99).random()
-    if (snake0 == snake1) { snake1 = snake1 + 15 } else if (snake0 == snake2) { snake2 = snake2 + 15 } else if (snake0 == snake3) { snake3 = snake3 + 15 } else if (snake0 == snake4) { snake4 = snake4 + 15 } else if (snake0 == snake5) { snake5 = snake5 + 15 } else if (snake0 == snake6) { snake6 = snake6 + 15 } else if (snake0 == snake7) { snake7 = snake7 + 15 }
-    if (snake1 == snake0) { snake1 = snake1 + 15 } else if (snake1 == snake2) { snake1 = snake2 + 15 } else if (snake1 == snake3) { snake1 = snake3 + 15 } else if (snake1 == snake4) { snake1 = snake4 + 15 } else if (snake1 == snake5) { snake1 = snake5 + 15 } else if (snake1 == snake6) { snake1 = snake6 + 15 } else if (snake1 == snake7) { snake1 = snake7 + 15 }
-    if (snake2 == snake1) { snake2 = snake1 + 15 } else if (snake2 == snake0) { snake2 = snake0 + 15 } else if (snake2 == snake3) { snake2 = snake3 + 15 } else if (snake2 == snake4) { snake2 = snake4 + 15 } else if (snake2 == snake5) { snake2 = snake5 + 15 } else if (snake2 == snake6) { snake2 = snake6 + 15 } else if (snake2 == snake7) { snake2 = snake7 + 15 }
-    if (snake3 == snake1) { snake3 = snake1 + 15 } else if (snake3 == snake2) { snake3 = snake2 + 15 } else if (snake3 == snake0) { snake3 = snake0 + 15 } else if (snake3 == snake4) { snake3 = snake4 + 15 } else if (snake3 == snake5) { snake3 = snake5 + 15 } else if (snake3 == snake6) { snake3 = snake6 + 15 } else if (snake3 == snake7) { snake3 = snake7 + 15 }
-    if (snake4 == snake1) { snake4 = snake1 + 15 } else if (snake4 == snake2) { snake4 = snake2 + 15 } else if (snake4 == snake3) { snake4 = snake3 + 15 } else if (snake4 == snake0) { snake4 = snake0 + 15 } else if (snake4 == snake5) { snake4 = snake5 + 15 } else if (snake4 == snake6) { snake4 = snake6 + 15 } else if (snake4 == snake7) { snake4 = snake7 + 15 }
-    if (snake5 == snake1) { snake5 = snake1 + 15 } else if (snake5 == snake2) { snake5 = snake2 + 15 } else if (snake5 == snake3) { snake5 = snake3 + 15 } else if (snake5 == snake4) { snake5 = snake4 + 15 } else if (snake5 == snake0) { snake5 = snake0 + 15 } else if (snake5 == snake6) { snake5 = snake6 + 15 } else if (snake5 == snake7) { snake5 = snake7 + 15 }
-    if (snake6 == snake1) { snake6 = snake1 + 15 } else if (snake6 == snake2) { snake6 = snake2 + 15 } else if (snake6 == snake3) { snake6 = snake3 + 15 } else if (snake6 == snake4) { snake6 = snake4 + 15 } else if (snake6 == snake5) { snake6 = snake5 + 15 } else if (snake6 == snake0) { snake6 = snake0 + 15 } else if (snake6 == snake7) { snake6 = snake7 + 15 }
-    if (snake7 == snake1) { snake7 = snake1 + 15 } else if (snake7 == snake2) { snake7 = snake2 + 15 } else if (snake7 == snake3) { snake7 = snake3 + 15 } else if (snake7 == snake4) { snake7 = snake4 + 15 } else if (snake7 == snake5) { snake7 = snake5 + 15 } else if (snake7 == snake6) { snake7 = snake6 + 15 } else if (snake7 == snake0) { snake7 = snake0 + 15 }
+fun snakeNums() {
+    snake0 = (11..99).random()
+    snake1 = (11..99).random()
+    snake2 = (11..99).random()
+    snake3 = (11..99).random()
+    snake4 = (11..99).random()
+    snake5 = (11..99).random()
+    snake6 = (11..99).random()
+    snake7 = (11..99).random()
+    println(snake0)
+    println(snake1)
+    println(snake2)
+    println(snake3)
+    println(snake4)
+    println(snake5)
+    println(snake6)
+    println(snake7)
+}
+
+fun snakePlace() {
+    val row = 9 - (snake0 - 1) / 10
+    val col = snake0.toString().last()
+    var coll = 9 - (col.digitToInt() - 1)
+
+    val row1 = 9 - (snake1 - 1) / 10
+    val col1 = snake1.toString().last()
+    var coll1 = 9 - (col1.digitToInt() - 1)
+
+    val row2 = 9 - (snake2 - 1) / 10
+    val col2 = snake2.toString().last()
+    var coll2 = 9 - (col2.digitToInt() - 1)
+
+    val row3 = 9 - (snake3 - 1) / 10
+    val col3 = snake3.toString().last()
+    var coll3 = 9 - (col3.digitToInt() - 1)
+    val row4 = 9 - (snake4 - 1) / 10
+    val col4 = snake4.toString().last()
+    var coll4 = 9 - (col4.digitToInt() - 1)
+    val row5 = 9 - (snake5 - 1) / 10
+    val col5 = snake5.toString().last()
+    var coll5 = 9 - (col5.digitToInt() - 1)
+    val row6 = 9 - (snake6 - 1) / 10
+    val col6 = snake6.toString().last()
+    var coll6 = 9 - (col6.digitToInt() - 1)
+    val row7 = 9 - (snake7 - 1) / 10
+    val col7 = snake7.toString().last()
+    var coll7 = 9 - (col7.digitToInt() - 1)
+    if (coll >= 10) {
+        coll = 0
+    }
+    if (coll1 >= 10) {
+        coll1 = 0
+    }
+    if (coll2 >= 10) {
+        coll3 = 0
+    }
+    if (coll3 >= 10) {
+        coll4 = 0
+    }
+    if (coll4 >= 10) {
+        coll5 = 0
+    }
+    if (coll5 >= 10) {
+        coll5 = 0
+    }
+    if (coll6 >= 10) {
+        coll6 = 0
+    }
+    if (coll7 >= 10) {
+        coll7 = 0
+    }
+    if(grid[row][coll] != snake) {
+        grid[row][coll] = snake
+    }
+    grid[row1][coll1] = snake
+    grid[row2][coll2] = snake
+    grid[row3][coll3] = snake
+    grid[row4][coll4] = snake
+    grid[row5][coll5] = snake
+    grid[row6][coll6] = snake
+    grid[row7][coll7] = snake
 }
 
 //assigning numbers to board
