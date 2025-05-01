@@ -44,3 +44,9 @@ after roll
 my snake perfectly moved me back
 ---
 
+full playthrough
+![ezgif-162b7ffaca87e1.gif](screenshots/ezgif-162b7ffaca87e1.gif)
+![ezgif-1cbed33e7a4bab.gif](screenshots/ezgif-1cbed33e7a4bab.gif)
+
+---
+
