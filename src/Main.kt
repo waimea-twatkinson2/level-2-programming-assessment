@@ -35,6 +35,8 @@ var player1Column = 9
 var player2Column = 9
 var player1Tile = 1
 var player2Tile = 1
+var player1Turn = 0
+var player2Turn = 0
 
 //Things for The Grid
 const val row = 10
@@ -287,6 +289,9 @@ fun cont(prompt: String): String {
             if (coll == 10) {
                 coll = 0
             }
+            if (player1Tile < 2) {
+                player1Tile = 0
+            }
             grid[row][coll] = player1.padEnd(14)
         }
         //CHECKING FOR LADDER
@@ -305,18 +310,7 @@ fun cont(prompt: String): String {
             grid[row][coll] = player1.padEnd(14)
             grid[row2][coll2] = player2.padEnd(14)
         }
-        //preparing for the players to be on the same square
-        if (player1Tile == player2Tile) {
-            val row = 9 - (player1Tile - 1) / 10
-            var col = player1Tile.toString().last()
-            var coll = 9 - (col.digitToInt() - 1)
-            val row2 = 9 - (player2Tile - 1) / 10
-            var col2 = player2Tile.toString().last()
-            var coll2 = 9 - (col2.digitToInt() - 1)
-            println("[$row],[$coll]")
-            grid[row][coll] = player1 + player2.padEnd(13)
-        }
-        if (player1Tile < 1) {
+        if (player1Tile < 2) {
             player1Tile = 1
             row = 9 - (player1Tile - 1) / 10
             col = player1Tile.toString().last()
@@ -329,7 +323,19 @@ fun cont(prompt: String): String {
         ladderPlace()
         grid[row][coll] = player1.padEnd(14)
         grid[row2][coll2] = player2.padEnd(14)
+        //preparing for the players to be on the same square
+        if (player1Tile == player2Tile) {
+            val row = 9 - (player1Tile - 1) / 10
+            var col = player1Tile.toString().last()
+            var coll = 9 - (col.digitToInt() - 1)
+            val row2 = 9 - (player2Tile - 1) / 10
+            var col2 = player2Tile.toString().last()
+            var coll2 = 9 - (col2.digitToInt() - 1)
+            println("[$row],[$coll]")
+            grid[row][coll] = player1 + player2.padEnd(13)
+        }
         printBoard()
+        player1Turn++
         println(die)
         println("[$row],[$coll]")
     }
@@ -380,6 +386,9 @@ fun contt(prompt: String): String {
             if (coll2 == 10) {
                 coll2 = 0
             }
+            if (player2Tile < 2) {
+                player2Tile = 0
+            }
             grid[row2][coll2] = player2.padEnd(14)
         }
         //CHECKING FOR LADDER
@@ -398,18 +407,7 @@ fun contt(prompt: String): String {
             grid[row][coll] = player1.padEnd(14)
             grid[row2][coll2] = player2.padEnd(14)
         }
-        //preparing for the players to be on the same square
-        if (player1Tile == player2Tile) {
-            val row = 9 - (player1Tile - 1) / 10
-            var col = player1Tile.toString().last()
-            var coll = 9 - (col.digitToInt() - 1)
-            val row2 = 9 - (player2Tile - 1) / 10
-            var col2 = player2Tile.toString().last()
-            var coll2 = 9 - (col2.digitToInt() - 1)
-            println("[$row],[$coll]")
-            grid[row][coll] = player1 + player2.padEnd(13)
-        }
-        if (player2Tile < 1) {
+        if (player2Tile < 2) {
             player2Tile = 1
             row2 = 9 - (player2Tile - 1) / 10
             col2 = player2Tile.toString().last()
@@ -422,7 +420,19 @@ fun contt(prompt: String): String {
         ladderPlace()
         grid[row][coll] = player1.padEnd(14)
         grid[row2][coll2] = player2.padEnd(14)
+        //preparing for the players to be on the same square
+        if (player1Tile == player2Tile) {
+            val row = 9 - (player1Tile - 1) / 10
+            var col = player1Tile.toString().last()
+            var coll = 9 - (col.digitToInt() - 1)
+            val row2 = 9 - (player2Tile - 1) / 10
+            var col2 = player2Tile.toString().last()
+            var coll2 = 9 - (col2.digitToInt() - 1)
+            println("[$row],[$coll]")
+            grid[row][coll] = player1 + player2.padEnd(13)
+        }
         printBoard()
+        player2Turn++
         println(die)
         println("[$row],[$coll]")
     }
@@ -666,6 +676,8 @@ fun win() {
         printBoard()
         println("~".repeat(28 + winner1Name))
         println("Congratulations $player1Name, you win!!!")
+        println("-".repeat(28 + winner1Name))
+        println("it took you $player1Turn turns!")
         println("~".repeat(28 + winner1Name))
         exitProcess(0)
     }
@@ -677,6 +689,8 @@ fun win() {
         printBoard()
         println("~".repeat(28 + winner2Name))
         println("Congratulations $player2Name, you win!!!")
+        println("-".repeat(28 + winner2Name))
+        println("it took you $player2Turn turns!")
         println("~".repeat(28 + winner2Name))
         exitProcess(0)
     }

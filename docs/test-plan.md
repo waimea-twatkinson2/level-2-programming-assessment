@@ -26,7 +26,7 @@ I expect that the board will print out everything and will work well.
 
 ## Testing the players move correctly
 
-Making sure that the players move how they should with the roll of a die.
+Making sure that the players move how they should with the roll of a die, and get moved by ladders and snakes.
 
 ### Test Data To Use
 
