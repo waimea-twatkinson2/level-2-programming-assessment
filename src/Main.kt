@@ -47,6 +47,14 @@ var snake4 = 0
 var snake5 = 0
 var snake6 = 0
 var snake7 = 0
+var ladder0 = 0
+var ladder1 = 0
+var ladder2 = 0
+var ladder3 = 0
+var ladder4 = 0
+var ladder5 = 0
+var ladder6 = 0
+var ladder7 = 0
 
 //Haha global variables go brrrrrrrr
 
@@ -88,7 +96,9 @@ fun main() {
 
     //Placing Snakes and Ladders
     snakeNums()
+    ladderNums()
     snakePlace()
+    ladderPlace()
 
     //Print board
     printBoard()
@@ -98,64 +108,6 @@ fun main() {
         var playermove = 0
         cont("$player1Name, press enter to roll the dice!")
         contt("$player2Name, press enter to roll the dice!")
-
-
-        /**var findingPlayer1 = false
-        var playerNumber = 0
-        while (findingPlayer1 == false) {
-        while (playerNumber < 10) {
-        println(grid[0][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[1][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[2][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[3][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[4][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[5][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[6][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[7][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[8][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        playerNumber = 0
-        while (playerNumber < 10) {
-        println(grid[9][playerNumber].contains(player1.padEnd(13)))
-        playerNumber++
-        }
-        break
-        }
-         */
-
     }
 }
 //Getting user input
@@ -182,105 +134,105 @@ fun printBoard() {
             numby++
         }
         var printNumber = 100
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         while (printNumber > 90) {
-            print("|" + "  ${grid[0][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[0][printGrid]}".padEnd(7))
             printNumber--
             printGrid++
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 81
         printGrid = 9
         while (printNumber < 91) {
-            print("|" + "  ${grid[1][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[1][printGrid]}".padEnd(7))
             printNumber++
             printGrid--
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 80
         printGrid = 0
         while (printNumber > 70) {
-            print("|" + "  ${grid[2][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[2][printGrid]}".padEnd(7))
             printNumber--
             printGrid++
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 61
         printGrid = 9
         while (printNumber < 71) {
-            print("|" + "  ${grid[3][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[3][printGrid]}".padEnd(7))
             printNumber++
             printGrid--
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 60
         printGrid = 0
         while (printNumber > 50) {
-            print("|" + "  ${grid[4][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[4][printGrid]}".padEnd(7))
             printNumber--
             printGrid++
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 41
         printGrid = 9
         while (printNumber < 51) {
-            print("|" + "  ${grid[5][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[5][printGrid]}".padEnd(7))
             printNumber++
             printGrid--
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 40
         printGrid = 0
         while (printNumber > 30) {
-            print("|" + "  ${grid[6][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[6][printGrid]}".padEnd(7))
             printNumber--
             printGrid++
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 21
         printGrid = 9
         while (printNumber < 31) {
-            print("|" + "  ${grid[7][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[7][printGrid]}".padEnd(7))
             printNumber++
             printGrid--
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 20
         printGrid = 0
         while (printNumber > 10) {
-            print("|" + "  ${grid[8][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[8][printGrid]}".padEnd(7))
             printNumber--
             printGrid++
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         printNumber = 1
         printGrid = 9
         while (printNumber < 11) {
-            print("|" + "  ${grid[9][printGrid]}".padEnd(6))
+            print("|" + "  ${grid[9][printGrid]}".padEnd(7))
             printNumber++
             printGrid--
         }
         print("|")
         println("")
-        println("+------".repeat(row) + "+")
+        println("+-------".repeat(row) + "+")
         boardCounter++
         rowCounter++
         printNumber--
@@ -327,17 +279,31 @@ fun cont(prompt: String): String {
         //wincheck
         win()
         //checking for snake
-        if (player1Tile == snake0 || player1Tile == snake1 || player1Tile == snake2 || player1Tile == snake3 || player1Tile == snake4 || player1Tile == snake5 || player1Tile == snake6 || player1Tile == snake7)  {
-            player1Tile - (5..30).random()
+        if (player1Tile == snake0 || player1Tile == snake1 || player1Tile == snake2 || player1Tile == snake3 || player1Tile == snake4 || player1Tile == snake5 || player1Tile == snake6 || player1Tile == snake7) {
+            player1Tile = player1Tile - (5..30).random()
             row = 9 - (player1Tile - 1) / 10
             col = player1Tile.toString().last()
             coll = 9 - (col.digitToInt() - 1)
-            grid[row][coll] = player1.padEnd(13)
+            if (coll == 10) {
+                coll = 0
+            }
+            grid[row][coll] = player1.padEnd(14)
+        }
+        //CHECKING FOR LADDER
+        if (player1Tile == ladder0 || player1Tile == ladder1 || player1Tile == ladder2 || player1Tile == ladder3 || player1Tile == ladder4 || player1Tile == ladder5 || player1Tile == ladder6 || player1Tile == ladder7)  {
+            player1Tile = player1Tile + (5..30).random()
+            row = 9 - (player1Tile - 1) / 10
+            col = player1Tile.toString().last()
+            coll = 9 - (col.digitToInt() - 1)
+            if (coll == 10) {
+                coll = 0
+            }
+            grid[row][coll] = player1.padEnd(14)
         }
         //assigning the player to their square
         else {
-            grid[row][coll] = player1.padEnd(13)
-            grid[row2][coll2] = player2.padEnd(13)
+            grid[row][coll] = player1.padEnd(14)
+            grid[row2][coll2] = player2.padEnd(14)
         }
         //preparing for the players to be on the same square
         if (player1Tile == player2Tile) {
@@ -348,18 +314,21 @@ fun cont(prompt: String): String {
             var col2 = player2Tile.toString().last()
             var coll2 = 9 - (col2.digitToInt() - 1)
             println("[$row],[$coll]")
-            grid[row][coll] = player1 + player2.padEnd(12)
+            grid[row][coll] = player1 + player2.padEnd(13)
         }
         if (player1Tile < 1) {
             player1Tile = 1
             row = 9 - (player1Tile - 1) / 10
             col = player1Tile.toString().last()
             coll = 9 - (col.digitToInt() - 1)
-            grid[row][coll] = player1.padEnd(13)
+            grid[row][coll] = player1.padEnd(14)
 
         }
         //showing things
         snakePlace()
+        ladderPlace()
+        grid[row][coll] = player1.padEnd(14)
+        grid[row2][coll2] = player2.padEnd(14)
         printBoard()
         println(die)
         println("[$row],[$coll]")
@@ -404,16 +373,30 @@ fun contt(prompt: String): String {
         win()
         //checking for snake
         if (player2Tile == snake0 || player2Tile == snake1 || player2Tile == snake2 || player2Tile == snake3 || player2Tile == snake4 || player2Tile == snake5 || player2Tile == snake6 || player2Tile == snake7)  {
-            player2Tile - (5..30).random()
+            player2Tile = player2Tile - (5..30).random()
             row2 = 9 - (player2Tile - 1) / 10
             col2 = player2Tile.toString().last()
             coll2 = 9 - (col.digitToInt() - 1)
-            grid[row][coll] = player2.padEnd(13)
+            if (coll2 == 10) {
+                coll2 = 0
+            }
+            grid[row2][coll2] = player2.padEnd(14)
+        }
+        //CHECKING FOR LADDER
+        if (player2Tile == ladder0 || player2Tile == ladder1 || player2Tile == ladder2 || player2Tile == ladder3 || player2Tile == ladder4 || player2Tile == ladder5 || player2Tile == ladder6 || player2Tile == ladder7)  {
+            player2Tile = player2Tile + (5..30).random()
+            row2 = 9 - (player2Tile - 1) / 10
+            col2 = player2Tile.toString().last()
+            coll2 = 9 - (col.digitToInt() - 1)
+            if (coll2 == 10) {
+                coll2 = 0
+            }
+            grid[row2][coll2] = player2.padEnd(14)
         }
         //assigning the player to their square
         else {
-            grid[row][coll] = player1.padEnd(13)
-            grid[row2][coll2] = player2.padEnd(13)
+            grid[row][coll] = player1.padEnd(14)
+            grid[row2][coll2] = player2.padEnd(14)
         }
         //preparing for the players to be on the same square
         if (player1Tile == player2Tile) {
@@ -424,18 +407,21 @@ fun contt(prompt: String): String {
             var col2 = player2Tile.toString().last()
             var coll2 = 9 - (col2.digitToInt() - 1)
             println("[$row],[$coll]")
-            grid[row][coll] = player1 + player2.padEnd(12)
+            grid[row][coll] = player1 + player2.padEnd(13)
         }
         if (player2Tile < 1) {
             player2Tile = 1
-            row = 9 - (player2Tile - 1) / 10
-            col = player2Tile.toString().last()
-            coll = 9 - (col.digitToInt() - 1)
-            grid[row][coll] = player2.padEnd(13)
+            row2 = 9 - (player2Tile - 1) / 10
+            col2 = player2Tile.toString().last()
+            coll2 = 9 - (col.digitToInt() - 1)
+            grid[row2][coll2] = player2.padEnd(14)
 
         }
         //showing things
         snakePlace()
+        ladderPlace()
+        grid[row][coll] = player1.padEnd(14)
+        grid[row2][coll2] = player2.padEnd(14)
         printBoard()
         println(die)
         println("[$row],[$coll]")
@@ -459,29 +445,17 @@ fun snakeNums() {
     snake5 = (11..99).random()
     snake6 = (11..99).random()
     snake7 = (11..99).random()
-    println(snake0)
-    println(snake1)
-    println(snake2)
-    println(snake3)
-    println(snake4)
-    println(snake5)
-    println(snake6)
-    println(snake7)
 }
-
 fun snakePlace() {
     val row = 9 - (snake0 - 1) / 10
     val col = snake0.toString().last()
     var coll = 9 - (col.digitToInt() - 1)
-
     val row1 = 9 - (snake1 - 1) / 10
     val col1 = snake1.toString().last()
     var coll1 = 9 - (col1.digitToInt() - 1)
-
     val row2 = 9 - (snake2 - 1) / 10
     val col2 = snake2.toString().last()
     var coll2 = 9 - (col2.digitToInt() - 1)
-
     val row3 = 9 - (snake3 - 1) / 10
     val col3 = snake3.toString().last()
     var coll3 = 9 - (col3.digitToInt() - 1)
@@ -524,13 +498,85 @@ fun snakePlace() {
     if(grid[row][coll] != snake) {
         grid[row][coll] = snake
     }
-    grid[row1][coll1] = snake
-    grid[row2][coll2] = snake
-    grid[row3][coll3] = snake
-    grid[row4][coll4] = snake
-    grid[row5][coll5] = snake
-    grid[row6][coll6] = snake
-    grid[row7][coll7] = snake
+    grid[row1][coll1] = snake.padEnd(1)
+    grid[row2][coll2] = snake.padEnd(1)
+    grid[row3][coll3] = snake.padEnd(1)
+    grid[row4][coll4] = snake.padEnd(1)
+    grid[row5][coll5] = snake.padEnd(1)
+    grid[row6][coll6] = snake.padEnd(1)
+    grid[row7][coll7] = snake.padEnd(1)
+}
+
+//placing ladders
+fun ladderNums() {
+    ladder0 = (1..99).random()
+    ladder1 = (1..99).random()
+    ladder2 = (1..99).random()
+    ladder3 = (1..99).random()
+    ladder4 = (1..99).random()
+    ladder5 = (1..99).random()
+    ladder6 = (1..99).random()
+    ladder7 = (1..99).random()
+}
+fun ladderPlace() {
+    val row = 9 - (ladder0 - 1) / 10
+    val col = ladder0.toString().last()
+    var coll = 9 - (col.digitToInt() - 1)
+    val row1 = 9 - (ladder1 - 1) / 10
+    val col1 = ladder1.toString().last()
+    var coll1 = 9 - (col1.digitToInt() - 1)
+    val row2 = 9 - (ladder2 - 1) / 10
+    val col2 = ladder2.toString().last()
+    var coll2 = 9 - (col2.digitToInt() - 1)
+    val row3 = 9 - (ladder3 - 1) / 10
+    val col3 = ladder3.toString().last()
+    var coll3 = 9 - (col3.digitToInt() - 1)
+    val row4 = 9 - (ladder4 - 1) / 10
+    val col4 = ladder4.toString().last()
+    var coll4 = 9 - (col4.digitToInt() - 1)
+    val row5 = 9 - (ladder5 - 1) / 10
+    val col5 = ladder5.toString().last()
+    var coll5 = 9 - (col5.digitToInt() - 1)
+    val row6 = 9 - (ladder6 - 1) / 10
+    val col6 = ladder6.toString().last()
+    var coll6 = 9 - (col6.digitToInt() - 1)
+    val row7 = 9 - (ladder7 - 1) / 10
+    val col7 = ladder7.toString().last()
+    var coll7 = 9 - (col7.digitToInt() - 1)
+    if (coll >= 10) {
+        coll = 0
+    }
+    if (coll1 >= 10) {
+        coll1 = 0
+    }
+    if (coll2 >= 10) {
+        coll3 = 0
+    }
+    if (coll3 >= 10) {
+        coll4 = 0
+    }
+    if (coll4 >= 10) {
+        coll5 = 0
+    }
+    if (coll5 >= 10) {
+        coll5 = 0
+    }
+    if (coll6 >= 10) {
+        coll6 = 0
+    }
+    if (coll7 >= 10) {
+        coll7 = 0
+    }
+    if(grid[row][coll] != ladder) {
+        grid[row][coll] = ladder
+    }
+    grid[row1][coll1] = ladder
+    grid[row2][coll2] = ladder
+    grid[row3][coll3] = ladder
+    grid[row4][coll4] = ladder
+    grid[row5][coll5] = ladder
+    grid[row6][coll6] = ladder
+    grid[row7][coll7] = ladder
 }
 
 //assigning numbers to board
@@ -615,6 +661,9 @@ fun win() {
     if (player1Tile > 99) {
         win = true
         val winner1Name = player1Name.length
+        snakePlace()
+        ladderPlace()
+        printBoard()
         println("~".repeat(28 + winner1Name))
         println("Congratulations $player1Name, you win!!!")
         println("~".repeat(28 + winner1Name))
@@ -623,6 +672,9 @@ fun win() {
     else if (player2Tile > 99) {
         win = true
         val winner2Name = player2Name.length
+        snakePlace()
+        ladderPlace()
+        printBoard()
         println("~".repeat(28 + winner2Name))
         println("Congratulations $player2Name, you win!!!")
         println("~".repeat(28 + winner2Name))

@@ -10,31 +10,32 @@ Terminology:
 
 ---
 
-## Example Test Name
+## Testing the board prints correctly
 
-Example test description. Example test description. Example test description. Example test description. Example test description. Example test description.
+To print the board correctly, it must start with both players at square one and snakes and ladders thrown randomly around the board and then when the player rolls a die, move the player accordingly to the roll of the die.
 
 ### Test Data To Use
 
-Details of test data and reasons for selection. Details of test data and reasons for selection. Details of test data and reasons for selection.
+There are quite a few functions involved in making the board print everything correctly, I chose this test because the board printing is probably the most important part of the entire code because otherwise the game will be unplayable.
 
 ### Expected Test Result
 
-Statement detailing what should happen. Statement detailing what should happen. Statement detailing what should happen. Statement detailing what should happen. 
+I expect that the board will print out everything and will work well.  
 
 ---
 
-## Example Test Name
+## Testing the players move correctly
 
-Example test description. Example test description. Example test description. Example test description. Example test description. Example test description.
+Making sure that the players move how they should with the roll of a die.
 
 ### Test Data To Use
 
-Details of test data and reasons for selection. Details of test data and reasons for selection. Details of test data and reasons for selection.
+There are only 2 main functions to the movement, movement for player one and player two, I chose to test this because its the second most important thing play the game. 
+
 
 ### Expected Test Result
 
-Statement detailing what should happen. Statement detailing what should happen. Statement detailing what should happen. Statement detailing what should happen. 
+I expect that player 1 will move with the rol of the player 1 die and player 2 will move with the player 2 die, and if they hit a snake or a ladder they will randomly be moved up or down. 
 
 ---
 

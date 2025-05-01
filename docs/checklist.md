@@ -9,14 +9,14 @@ This checklist can be used to gauge progress towards different levels of success
 ### Program Functionality
 
 The game functions correctly and meets the specification:
-- [ ] The game is **playable**
+- [x] The game is **playable**
 - [x] The **instructions** for the game are available in-game
 - [x] **Two players** can play
 - [x] Player **names** are used to identify each player
 - [x] Players **take turns** to play
 - [x] Players provides **input data** to the game (e.g. moves to make)
 - [x] The **current status** of the game is shown after each play
-- [ ] A **winner is detected** correctly
+- [x] A **winner is detected** correctly
 
 ### Program Code
 
@@ -27,7 +27,7 @@ The program stores data using:
 The program structure:
 - [x] Is broken up into **functions**: a main function, plus other supporting functions 
 - [x] Contains **sequences** of instructions
-- [ ] Uses **conditional** instructions to control the program flow
+- [x] Uses **conditional** instructions to control the program flow
 - [x] Uses program **branches** (if...else, when, etc.)
 - [x] Uses **iteration** (loops) to repeat things (for, while, etc.)
 
@@ -36,12 +36,12 @@ The program structure:
 The program code:
 - [x] Is **indented** correctly
 - [x] Is **laid-out clearly**
-- [ ] Contains **comments** that help in understanding how it works
+- [x] Contains **comments** that help in understanding how it works
 
 ### Program Testing
 
 The program has been tested and there is documented evidence that:
-- [ ] The game is **fully functional**, showing testing of:
+- [x] The game is **fully functional**, showing testing of:
   - [ ] game setup
   - [ ] player moves
   - [ ] players taking turns
